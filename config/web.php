@@ -18,6 +18,11 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        'urlManager' => [
+            'class' => 'yii\\web\\UrlManager',
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
