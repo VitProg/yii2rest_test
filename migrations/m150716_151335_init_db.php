@@ -15,7 +15,7 @@ class m150716_151335_init_db extends Migration
         }
 
         $this->createTable('{{%users}}', [
-            'id' => Schema::TYPE_PK . ' UNSIGNED',
+            'id' => Schema::TYPE_INTEGER . '(11) NOT NULL AUTO_INCREMENT PRIMARY KEY',
             'username' => Schema::TYPE_STRING . ' NOT NULL',
             'auth_key' => Schema::TYPE_STRING . '(32) NOT NULL',
             'password_hash' => Schema::TYPE_STRING . ' NOT NULL',
@@ -27,9 +27,9 @@ class m150716_151335_init_db extends Migration
         ], $tableOptions);
 
         $this->createTable('{{%cars}}', [
-            'id' => Schema::TYPE_PK . ' UNSIGNED',
-            'user_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
-            'model_id' => Schema::TYPE_INTEGER . ' UNSIGNED NOT NULL',
+            'id' => Schema::TYPE_INTEGER . '(11) NOT NULL AUTO_INCREMENT PRIMARY KEY',
+            'user_id' => Schema::TYPE_INTEGER . '(11) UNSIGNED NOT NULL',
+            'model_id' => Schema::TYPE_INTEGER . '(11) UNSIGNED NOT NULL',
             'name' => Schema::TYPE_STRING . '(32) NOT NULL',
             'year' => Schema::TYPE_SMALLINT . ' UNSIGNED NOT NULL DEFAULT 0',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
@@ -37,10 +37,10 @@ class m150716_151335_init_db extends Migration
         ], $tableOptions);
 
         $this->createTable('{{%cars_models}}', [
-            'id' => Schema::TYPE_PK . ' UNSIGNED',
+            'id' => Schema::TYPE_INTEGER . '(11) NOT NULL AUTO_INCREMENT PRIMARY KEY',
             'name' => Schema::TYPE_STRING . '(32) NOT NULL',
-            'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'created_at' => Schema::TYPE_INTEGER . '(11) NOT NULL',
+            'updated_at' => Schema::TYPE_INTEGER . '(11) NOT NULL',
         ], $tableOptions);
 
         $this->createIndex('car_user_model', '{{%cars}}', ['user_id', 'model_id'], false);
