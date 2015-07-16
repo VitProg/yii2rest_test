@@ -44,7 +44,7 @@ class m150716_151335_init_db extends Migration
         ], $tableOptions);
 
         $this->createIndex('car_user_model', '{{%cars}}', ['user_id', 'model_id'], false);
-        $this->addForeignKey('car_link_model', '{{%cars}}', 'model_id', '{{%cars_model}}', 'id');
+        $this->addForeignKey('car_link_model', '{{%cars}}', 'model_id', '{{%cars_models}}', 'id');
         $this->addForeignKey('car_link_user', '{{%cars}}', 'user_id', '{{%users}}', 'id');
     }
 
