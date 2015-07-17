@@ -16,4 +16,16 @@ class CarController extends ActiveController
 {
     public $modelClass = Car::class;
 
+    protected function verbs()
+    {
+        return [
+            'index' => ['GET', 'HEAD'],
+            'view' => ['GET', 'HEAD'],
+            'create' => ['POST'],
+            'update' => ['PUT', 'PATCH'],
+            'delete' => ['DELETE'],
+            'options' => ['OPTIONS'],
+        ];
+    }
+
 }
