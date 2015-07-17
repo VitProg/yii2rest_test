@@ -30,6 +30,9 @@ $config = [
             'class' => 'yii\\web\\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'rules' => [
+                '' => 'common/default/index',
+            ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
