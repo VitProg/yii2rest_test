@@ -15,8 +15,8 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property CarsModels $model
- * @property Users $user
+ * @property CarModel $model
+ * @property User $user
  */
 class Car extends \yii\db\ActiveRecord
 {
@@ -43,6 +43,16 @@ class Car extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::class,
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return [
@@ -61,7 +71,7 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getModel()
     {
-        return $this->hasOne(CarsModels::className(), ['id' => 'model_id']);
+        return $this->hasOne(CarModel::className(), ['id' => 'model_id']);
     }
 
     /**
@@ -69,6 +79,6 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

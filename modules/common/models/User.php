@@ -17,7 +17,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Cars[] $cars
+ * @property Car[] $cars
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -65,6 +65,6 @@ class User extends \yii\db\ActiveRecord
      */
     public function getCars()
     {
-        return $this->hasMany(Cars::className(), ['user_id' => 'id']);
+        return $this->hasMany(Car::className(), ['user_id' => 'id']);
     }
 }

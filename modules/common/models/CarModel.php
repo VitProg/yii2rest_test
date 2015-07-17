@@ -13,7 +13,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Cars[] $cars
+ * @property Car[] $cars
  */
 class CarModel extends \yii\db\ActiveRecord
 {
@@ -31,37 +31,14 @@ class CarModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name'], 'required'],
             [['created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 32]
         ];
     }
 
     /**
-     * Returns a list of behaviors that this component should behave as.
-     *
-     * Child classes may override this method to specify the behaviors they want to behave as.
-     *
-     * The return value of this method should be an array of behavior objects or configurations
-     * indexed by behavior names. A behavior configuration can be either a string specifying
-     * the behavior class or an array of the following structure:
-     *
-     * ~~~
-     * 'behaviorName' => [
-     *     'class' => 'BehaviorClass',
-     *     'property1' => 'value1',
-     *     'property2' => 'value2',
-     * ]
-     * ~~~
-     *
-     * Note that a behavior class must extend from [[Behavior]]. Behavior names can be strings
-     * or integers. If the former, they uniquely identify the behaviors. If the latter, the corresponding
-     * behaviors are anonymous and their properties and methods will NOT be made available via the component
-     * (however, the behaviors can still respond to the component's events).
-     *
-     * Behaviors declared in this method will be attached to the component automatically (on demand).
-     *
-     * @return array the behavior configurations.
+     * @inheritdoc
      */
     public function behaviors()
     {
@@ -89,6 +66,6 @@ class CarModel extends \yii\db\ActiveRecord
      */
     public function getCars()
     {
-        return $this->hasMany(Cars::className(), ['model_id' => 'id']);
+        return $this->hasMany(Car::className(), ['model_id' => 'id']);
     }
 }
