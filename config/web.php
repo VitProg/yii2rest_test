@@ -36,6 +36,19 @@ $config = [
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['model' => 'api/model']],
             ],
         ],
+        'response' => [
+            'class' => 'yii\web\Response',
+            'on beforeSend' => function ($event) {
+                $response = $event->sender;
+                if ($response->data !== null && !empty(Yii::$app->request->get('suppress_response_code'))) {
+                    $response->data = [
+                        'success' => $response->isSuccessful,
+                        'data' => $response->data,
+                    ];
+                    $response->statusCode = 200;
+                }
+            },
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
