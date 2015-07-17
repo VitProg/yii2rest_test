@@ -33,7 +33,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'common/default/index',
-                ['class' => 'yii\\rest\\UrlRule', 'controller' => 'api/model'],
+                ['class' => 'yii\\rest\\UrlRule', 'controller' => ['model' => 'api/model']],
             ],
         ],
         'errorHandler' => [
