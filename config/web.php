@@ -7,6 +7,9 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [
+        'common' => [
+            'class' => 'app\modules\common\CommonModule',
+        ],
         'api' => [
             'class' => 'app\modules\api\ApiModule',
         ],
