@@ -29,9 +29,11 @@ $config = [
         'urlManager' => [
             'class' => 'yii\\web\\UrlManager',
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
                 '' => 'common/default/index',
+                ['class' => 'yii\\rest\\UrlRule', 'controller' => 'api/model'],
             ],
         ],
         'errorHandler' => [
