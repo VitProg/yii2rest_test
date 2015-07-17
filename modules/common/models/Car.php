@@ -3,6 +3,7 @@
 namespace app\modules\common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "{{%cars}}".
