@@ -28,6 +28,7 @@ http://yii2rest.jquarter.ru/
 
 API available:
 
+```php
 POST /user/login 
     params: username, password
     users (lgin, password):
@@ -45,3 +46,4 @@ GET /my/cars/ID
 POST /my/cars
 PUT /my/cars/ID
 DELETE /my/cars/ID
+```
