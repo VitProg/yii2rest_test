@@ -21,21 +21,21 @@ class ModelController extends ActiveController
 
     public function behaviors() {
         return [
-            'authenticator' => [
-                'class' => HttpBasicAuth::className(),
-//                'auth'=> function ($username, $password) {
-//                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
-//                    print_r([$username, $password, $password_hash]);
-//                    print_r(User::findOne([
-//                        'username' => $username,
-//                        'password_hash' => $password_hash,
-//                    ]));die();
-//                    return User::findOne([
-//                        'username' => $username,
-//                        'password_hash' => $password_hash,
-//                    ]);
-//                },
-            ],
+//            'authenticator' => [
+//                'class' => HttpBasicAuth::className(),
+////                'auth'=> function ($username, $password) {
+////                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
+////                    print_r([$username, $password, $password_hash]);
+////                    print_r(User::findOne([
+////                        'username' => $username,
+////                        'password_hash' => $password_hash,
+////                    ]));die();
+////                    return User::findOne([
+////                        'username' => $username,
+////                        'password_hash' => $password_hash,
+////                    ]);
+////                },
+//            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
