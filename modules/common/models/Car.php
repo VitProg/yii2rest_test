@@ -94,6 +94,36 @@ class Car extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public function fields() {
+        return [
+            'id',
+            'user_id',
+            'model_id',
+            'model' => function() {
+                return $this->model->name;
+            },
+            'name',
+            'year',
+        ];
+    }
+
+    public function extraFields() {
+        return [
+            'id',
+            'user_id',
+            'user' => function() {
+                return $this->user->username;
+            },
+            'model_id',
+            'model' => function() {
+                return $this->model->name;
+            },
+            'name',
+            'year',
+            'created_at',
+            'updated_at',
+        ];
+    }
 
 
 }
