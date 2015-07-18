@@ -6,8 +6,7 @@
  * Time: 20:26
   */
 
-namespace app\modules\common\components;
-//          app\modules\common\components\ApiErrorHandler
+namespace app\modules\api\components;
 
 use Yii;
 use yii\web\ErrorHandler;

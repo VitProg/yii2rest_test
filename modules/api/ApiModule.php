@@ -2,7 +2,7 @@
 
 namespace app\modules\api;
 
-use app\modules\common\components\ApiErrorHandler;
+use app\modules\api\components\ApiErrorHandler;
 
 class ApiModule extends \yii\base\Module
 {
