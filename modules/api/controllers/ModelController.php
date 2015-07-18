@@ -50,9 +50,9 @@ class ModelController extends ActiveController
     }
 
 
-//    public function checkAccess($action, $model = null, $params = [])
-//    {
-//        die('test');
-//    }
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        return true;
+    }
 
 }
