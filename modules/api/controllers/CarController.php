@@ -14,6 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
+use yii\web\ForbiddenHttpException;
 
 class CarController extends ActiveController
 {
@@ -52,9 +53,10 @@ class CarController extends ActiveController
 
     public function checkAccess($action, $model = null, $params = []) {
         if ($action === 'view' && $model instanceof Car) {
-            return $model->user_id === (int)Yii::$app->user->id;
+            if ($model->user_id !== (int)Yii::$app->user->id) {
+                throw new ForbiddenHttpException();
+            }
         }
-        return parent::checkAccess($action, $model, $params);
     }
 
 
