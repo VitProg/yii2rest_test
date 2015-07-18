@@ -21,9 +21,9 @@ class ModelController extends ActiveController
 
     public function behaviors() {
         return [
-//            'authenticator' => [
+            'authenticator' => [
 ////                'class' => HttpBasicAuth::className(),
-//                'class' => HttpBearerAuth::className(),
+                'class' => HttpBearerAuth::className(),
 ////                'auth'=> function ($username, $password) {
 ////                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
 ////                    print_r([$username, $password, $password_hash]);
@@ -36,7 +36,7 @@ class ModelController extends ActiveController
 ////                        'password_hash' => $password_hash,
 ////                    ]);
 ////                },
-//            ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
