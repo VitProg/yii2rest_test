@@ -6,10 +6,9 @@
  * Time: 19:31
   */
 
-print_r(file_get_contents('php://input'));
-print_r($_POST);
-print_r($_GET);
-print_r($_REQUEST);
-print_r($_SERVER);
+$data = file_get_contents('php://input');
+$data = json_decode($data);
+var_dump($data);
+
 
 
