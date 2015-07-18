@@ -52,9 +52,10 @@ $config = [
 //                }
 //            },
 //        ],
-//        'errorHandler' => [
-//            'errorAction' => 'site/error',
-//        ],
+        'errorHandler' => [
+            'class' => 'app\\modules\\common\\components\\ApiErrorHandler',
+            'errorAction' => 'site/error',
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
