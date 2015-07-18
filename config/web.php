@@ -51,23 +51,12 @@ $config = [
                 'signup' => 'common/default/signup',
                 'request-password-reset' => 'common/default/requestPasswordReset',
                 'reset-password' => 'common/default/resetPassword',
-                ['class' => 'yii\\rest\\UrlRule', 'controller' => ['model' => 'api/model']],
+                ['class' => 'yii\\rest\\UrlRule', 'controller' => ['models' => 'api/model']],
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['my/cars' => 'api/car']],
                 'OPTIONS user/login' => 'api/user/login',
                 'POST user/login' => 'api/user/login',
             ],
         ],
-//        'errorHandler' => [
-////            'class' => 'app\modules\api\components\ApiErrorHandler',
-//            'errorAction' => 'common/default/error',
-//        ],
-//        'mailer' => [
-//            'class' => 'yii\swiftmailer\Mailer',
-//            // send all mails to a file by default. You have to set
-//            // 'useFileTransport' to false and configure a transport
-//            // for the mailer to send real emails.
-//            'useFileTransport' => true,
-//        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
