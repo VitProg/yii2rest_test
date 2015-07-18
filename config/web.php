@@ -53,7 +53,7 @@ $config = [
 //            },
 //        ],
         'errorHandler' => [
-            'class' => 'app\modules\api\components\ApiErrorHandler',
+//            'class' => 'app\modules\api\components\ApiErrorHandler',
             'errorAction' => 'common/default/error',
         ],
         'mailer' => [
