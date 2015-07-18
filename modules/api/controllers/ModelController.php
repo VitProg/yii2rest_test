@@ -24,7 +24,7 @@ class ModelController extends ActiveController
             'authenticator' => [
                 'class' => HttpBasicAuth::className(),
                 'auth'=> function ($username, $password) {
-                    $password_hash = \Yii::$app->security->generatePasswordHash;
+                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
                     print_r([$username, $password, $password_hash]);die();
                     return User::findOne([
                         'username' => $username,
