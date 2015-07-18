@@ -5,7 +5,6 @@
     "homepage": "http://yii2rest.jquarter.ru/",
     "type": "project",
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.4",
