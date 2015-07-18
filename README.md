@@ -4,7 +4,7 @@ Simple Yii 2 REST application
 ###INSTALLATION
 
 **Install via Composer**
-
+*NOT WORK*
 If you do not have [Composer](http://getcomposer.org/), you may install it by following the
 [instructions at getcomposer.org](https://getcomposer.org/doc/00-intro.md).
 
