@@ -38,22 +38,22 @@ $config = [
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['my/cars' => 'api/car']],
             ],
         ],
-//        'response' => [
-//            'class' => 'yii\web\Response',
-//            'on beforeSend' => function ($event) {
-//                $response = $event->sender;
-//                if ($response->data !== null && !empty(Yii::$app->request->get('suppress_response_code'))) {
-//                    $response->data = [
-//                        'success' => $response->isSuccessful,
-//                        'data' => $response->data,
-//                    ];
-//                    $response->statusCode = 200;
-//                }
-//            },
-//        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
+        'response' => [
+            'class' => 'yii\web\Response',
+            'on beforeSend' => function ($event) {
+                $response = $event->sender;
+                if ($response->data !== null && !empty(Yii::$app->request->get('suppress_response_code'))) {
+                    $response->data = [
+                        'success' => $response->isSuccessful,
+                        'data' => $response->data,
+                    ];
+                    $response->statusCode = 200;
+                }
+            },
         ],
+//        'errorHandler' => [
+//            'errorAction' => 'site/error',
+//        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
