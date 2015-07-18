@@ -15,6 +15,9 @@ composer global require "fxp/composer-asset-plugin:~1.0.0"
 composer create-project --prefer-dist -s dev "VitProg/yii2rest_test" .
 ```
 
+###DEMO
+http://yii2rest.jquarter.ru/
+
 ###GETTING STARTED
 
 - Create a new database and adjust the `components['db']` configuration in `config/db.php` accordingly.
