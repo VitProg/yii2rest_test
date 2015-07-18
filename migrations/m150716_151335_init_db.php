@@ -58,7 +58,7 @@ class m150716_151335_init_db extends Migration
             'updated_at' => Schema::TYPE_INTEGER . '(11) NOT NULL',
         ], $tableOptions);
 
-        $now = new yii\db\Expression('NOW()');
+        $now = new yii\db\Expression('UNIX_TIMESTAMP(NOW())');
         $this->batchInsert('{{%cars_models}}', ['name', 'created_at', 'updated_at'], [
             ['Audi', $now, $now],
             ['Alfa Romeo', $now, $now],
