@@ -28,6 +28,7 @@ class ApiErrorHandler extends ErrorHandler
         }
 
         $response->data = $this->convertExceptionToArray($exception);
+        $response->content = '';
         $response->setStatusCode($exception->statusCode);
 
         $response->send();
