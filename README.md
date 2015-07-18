@@ -31,7 +31,7 @@ API available:
 ```php
 POST /user/login 
     params: username, password
-    users (lgin, password):
+    *users (login, password):
         demo1 demo
         demo2 demo
         
