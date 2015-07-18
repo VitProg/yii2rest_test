@@ -24,7 +24,7 @@ class ModelController extends ActiveController
             'authenticator' => [
                 'class' => HttpBasicAuth::className(),
                 'auth'=> function ($username, $password) {
-                    die('test');
+                    print_r([$username, $password]);
                     return User::findOne([
                         'username' => $username,
                         'password_hash' => $password,
