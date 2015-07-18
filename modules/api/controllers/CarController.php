@@ -50,6 +50,10 @@ class CarController extends ActiveController
         );
     }
 
+    public function checkAccess($action, $model = null, $params = []) {
+        var_dump([$action, $model, $params]);die();
+        return parent::checkAccess($action, $model, $params);
+    }
 
 
 }
