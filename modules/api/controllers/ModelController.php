@@ -16,20 +16,20 @@ use yii\rest\ActiveController;
 class ModelController extends ActiveController
 {
     public $modelClass = CarModel::class;
-//
-//    public function behaviors() {
-//        return [
-//            'access' => [
-//                'class' => AccessControl::className(),
-//                'rules' => [
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
-//        ];
-//    }
+
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
 
     public function checkAccess($action, $model = null, $params = [])
