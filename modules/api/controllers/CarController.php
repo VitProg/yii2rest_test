@@ -41,7 +41,7 @@ class CarController extends ActiveController
                         /* @var $model Car */
                         $model = new $this->modelClass;
                         $query = $model::find();
-                        $query->where('user_id', Yii::$app->user->id);
+                        $query->where('user_id = ' . (int)Yii::$app->user->id);
                         $dataProvider = new ActiveDataProvider(['query' => $query]);
                         return $dataProvider;
                     }
