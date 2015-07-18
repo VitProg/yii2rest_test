@@ -35,23 +35,15 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'common/default/index',
+                'login' => 'common/default/login',
+                'logout' => 'common/default/logout',
+                'signup' => 'common/default/signup',
+                'request-password-reset' => 'common/default/requestPasswordReset',
+                'reset-password' => 'common/default/resetPassword',
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['model' => 'api/model']],
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['my/cars' => 'api/car']],
             ],
         ],
-//        'response' => [
-//            'class' => 'yii\web\Response',
-//            'on beforeSend' => function ($event) {
-//                $response = $event->sender;
-//                if ($response->data !== null && !empty(Yii::$app->request->get('suppress_response_code'))) {
-//                    $response->data = [
-//                        'success' => $response->isSuccessful,
-//                        'data' => $response->data,
-//                    ];
-//                    $response->statusCode = 200;
-//                }
-//            },
-//        ],
         'errorHandler' => [
 //            'class' => 'app\modules\api\components\ApiErrorHandler',
             'errorAction' => 'common/default/error',
