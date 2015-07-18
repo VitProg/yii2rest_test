@@ -13,6 +13,7 @@ use app\modules\common\models\CarModel;
 use app\modules\common\models\User;
 use yii\filters\AccessControl;
 use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 
 class ModelController extends ActiveController
@@ -21,21 +22,22 @@ class ModelController extends ActiveController
 
     public function behaviors() {
         return [
-//            'authenticator' => [
+            'authenticator' => [
 //                'class' => HttpBasicAuth::className(),
-////                'auth'=> function ($username, $password) {
-////                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
-////                    print_r([$username, $password, $password_hash]);
-////                    print_r(User::findOne([
-////                        'username' => $username,
-////                        'password_hash' => $password_hash,
-////                    ]));die();
-////                    return User::findOne([
-////                        'username' => $username,
-////                        'password_hash' => $password_hash,
-////                    ]);
-////                },
-//            ],
+                'class' => HttpBearerAuth::className(),
+//                'auth'=> function ($username, $password) {
+//                    $password_hash = \Yii::$app->security->generatePasswordHash($password);
+//                    print_r([$username, $password, $password_hash]);
+//                    print_r(User::findOne([
+//                        'username' => $username,
+//                        'password_hash' => $password_hash,
+//                    ]));die();
+//                    return User::findOne([
+//                        'username' => $username,
+//                        'password_hash' => $password_hash,
+//                    ]);
+//                },
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
