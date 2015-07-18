@@ -24,7 +24,8 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\modules\common\models\User',
-//            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
+            'loginUrl' => null,
 //            'enableSession' => false,
         ],
         'urlManager' => [
