@@ -12,7 +12,7 @@ class DefaultController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-                'view' => 'common\views\error',
+                'view' => 'error',
             ],
         ];
     }
