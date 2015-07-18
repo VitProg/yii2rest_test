@@ -24,7 +24,7 @@ class ModelController extends ActiveController
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
