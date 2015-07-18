@@ -13,9 +13,9 @@ class ApiModule extends \yii\base\Module
         parent::init();
         \Yii::$app->user->enableSession = false;
 
-        $handler = new ApiErrorHandler();
-        \Yii::$app->set('errorHandler', $handler);
-        //необходимо вызывать register, это обязательный метод для регистрации обработчика
-        $handler->register();
+//        $handler = new ApiErrorHandler();
+//        \Yii::$app->set('errorHandler', $handler);
+//        //необходимо вызывать register, это обязательный метод для регистрации обработчика
+//        $handler->register();
     }
 }
