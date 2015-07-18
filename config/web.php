@@ -54,7 +54,7 @@ $config = [
 //        ],
         'errorHandler' => [
             'class' => 'app\modules\api\components\ApiErrorHandler',
-//            'errorAction' => 'site/error',
+            'errorAction' => 'common/default/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
