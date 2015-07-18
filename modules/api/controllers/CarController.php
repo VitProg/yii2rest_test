@@ -51,7 +51,9 @@ class CarController extends ActiveController
     }
 
     public function checkAccess($action, $model = null, $params = []) {
-        var_dump([$action, $model, $params]);die();
+        if ($action === 'view' && $model instanceof Car) {
+            return $model->user_id === (int)Yii::$app->user->id;
+        }
         return parent::checkAccess($action, $model, $params);
     }
 
