@@ -47,8 +47,8 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::className(),
             $behaviors['authenticator'] = [
                 'class' =>
-//                    HttpBasicAuth::className(),
-                    HttpBearerAuth::className(),
+                    HttpBasicAuth::className(),
+//                    HttpBearerAuth::className(),
 //                    QueryParamAuth::className(),
             ],
         ];
