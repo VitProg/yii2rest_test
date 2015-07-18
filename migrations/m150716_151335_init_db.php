@@ -27,6 +27,20 @@ class m150716_151335_init_db extends Migration
             'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
 
+        $user = new \app\modules\common\models\User();
+        $user->username = 'demo1';
+        $user->email = 'demo@mail.net';
+        $user->generateAuthKey();
+        $user->setPassword('demo');
+        $user->insert();
+
+        $user = new \app\modules\common\models\User();
+        $user->username = 'demo2';
+        $user->email = 'demo@mail.net';
+        $user->generateAuthKey();
+        $user->setPassword('demo');
+        $user->insert();
+
         $this->createTable('{{%cars}}', [
             'id' => Schema::TYPE_INTEGER . '(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY',
             'user_id' => Schema::TYPE_INTEGER . '(11) UNSIGNED NOT NULL',
@@ -43,6 +57,50 @@ class m150716_151335_init_db extends Migration
             'created_at' => Schema::TYPE_INTEGER . '(11) NOT NULL',
             'updated_at' => Schema::TYPE_INTEGER . '(11) NOT NULL',
         ], $tableOptions);
+
+        $now = new yii\db\Expression('NOW()');
+        $this->batchInsert('{{%cars_models}}', ['name', 'created_at', 'updated_at'], [
+            ['Audi', $now, $now],
+            ['Alfa Romeo', $now, $now],
+            ['Acura', $now, $now],
+            ['BMW', $now, $now],
+            ['Buick', $now, $now],
+            ['Chevrolet', $now, $now],
+            ['Citroen', $now, $now],
+            ['Chrysler', $now, $now],
+            ['Cadillac', $now, $now],
+            ['Daihatsu', $now, $now],
+            ['Dodge', $now, $now],
+            ['Daewoo', $now, $now],
+            ['Ford', $now, $now],
+            ['Fiat', $now, $now],
+            ['Ferrari', $now, $now],
+            ['Great Wall', $now, $now],
+            ['Honda', $now, $now],
+            ['Hyundai', $now, $now],
+            ['Infiniti', $now, $now],
+            ['Isuzu', $now, $now],
+            ['Kia', $now, $now],
+            ['Lancia', $now, $now],
+            ['Mazda', $now, $now],
+            ['Mitsubishi', $now, $now],
+            ['Mercedes-Benz', $now, $now],
+            ['Maserati', $now, $now],
+            ['MG', $now, $now],
+            ['Nissan', $now, $now],
+            ['Opel', $now, $now],
+            ['Peugeot', $now, $now],
+            ['Pontiac', $now, $now],
+            ['Renault', $now, $now],
+            ['Suzuki', $now, $now],
+            ['Subaru', $now, $now],
+            ['Toyota', $now, $now],
+            ['Volkswagen', $now, $now],
+            ['Volvo', $now, $now],
+            ['ВАЗ (Lada)', $now, $now],
+            ['ГАЗ', $now, $now],
+            ['Москвич', $now, $now],
+        ]);
 
         $this->createIndex('car_user_model', '{{%cars}}', ['user_id', 'model_id'], false);
         $this->addForeignKey('car_link_model', '{{%cars}}', 'model_id', '{{%cars_models}}', 'id');

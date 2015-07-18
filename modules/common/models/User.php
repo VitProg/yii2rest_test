@@ -45,9 +45,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $behaviors = parent::behaviors();
         $behaviors[] = TimestampBehavior::className();
-        $behaviors['authenticator'] = [
-            'class' => HttpBearerAuth::className(),
-        ];
         return $behaviors;
     }
 
@@ -75,9 +72,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-//        var_dump(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
-//        die();
-        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['auth_key' => $token, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**

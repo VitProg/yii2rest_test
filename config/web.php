@@ -15,23 +15,34 @@ $config = [
         ],
     ],
     'components' => [
-        'request' => [
-            // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'fjhc387fg7g72g12g367g',
-        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
         'user' => [
             'identityClass' => 'app\modules\common\models\User',
             'enableAutoLogin' => false,
             'loginUrl' => null,
             'enableSession' => false,
         ],
+        'response' => [
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8',
+        ],
+        'log' => [
+            'targets' => [
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['error', 'warning'],
+                ],
+            ],
+        ],
+        'request' => [
+            'class' => '\yii\web\Request',
+            'enableCookieValidation' => false,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
+        ],
         'urlManager' => [
             'class' => 'yii\\web\\UrlManager',
             'enablePrettyUrl' => true,
-//            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
                 '' => 'common/default/index',
@@ -42,28 +53,21 @@ $config = [
                 'reset-password' => 'common/default/resetPassword',
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['model' => 'api/model']],
                 ['class' => 'yii\\rest\\UrlRule', 'controller' => ['my/cars' => 'api/car']],
+                'OPTIONS user/login' => 'api/user/login',
+                'POST user/login' => 'api/user/login',
             ],
         ],
-        'errorHandler' => [
-//            'class' => 'app\modules\api\components\ApiErrorHandler',
-            'errorAction' => 'common/default/error',
-        ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+//        'errorHandler' => [
+////            'class' => 'app\modules\api\components\ApiErrorHandler',
+//            'errorAction' => 'common/default/error',
+//        ],
+//        'mailer' => [
+//            'class' => 'yii\swiftmailer\Mailer',
+//            // send all mails to a file by default. You have to set
+//            // 'useFileTransport' to false and configure a transport
+//            // for the mailer to send real emails.
+//            'useFileTransport' => true,
+//        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
@@ -82,7 +86,6 @@ if (YII_ENV_DEV) {
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['*'],
     ];
-
 }
 
 return $config;

@@ -8,40 +8,48 @@
 
 namespace app\modules\api\controllers;
 
-
+use Yii;
 use app\modules\common\models\Car;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 
 class CarController extends ActiveController
 {
     public $modelClass = Car::class;
 
-    protected function verbs()
+    public function behaviors()
     {
-        return [
-            'index' => ['GET', 'HEAD'],
-            'view' => ['GET', 'HEAD'],
-            'create' => ['POST'],
-            'update' => ['PUT', 'PATCH'],
-            'delete' => ['DELETE'],
-            'options' => ['OPTIONS'],
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => QueryParamAuth::className(),
         ];
+        return $behaviors;
     }
 
-    public function behaviors() {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
+    public function actions()
+    {
+        return array_merge(
+            parent::actions(),
+            [
+                'index' => [
+                    'class' => 'yii\rest\IndexAction',
+                    'modelClass' => $this->modelClass,
+                    'checkAccess' => [$this, 'checkAccess'],
+                    'prepareDataProvider' => function ($action) {
+                        /* @var $model Car */
+                        $model = new $this->modelClass;
+                        $query = $model::find();
+                        $dataProvider = new ActiveDataProvider(['query' => $query]);
+                        $model->setAttribute('user_id', Yii::$app->user->id);
+                        return $dataProvider;
+                    }
+                ]
+            ]
+        );
     }
+
 
 
 }

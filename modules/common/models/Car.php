@@ -3,7 +3,9 @@
 namespace app\modules\common\models;
 
 use Yii;
+use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%cars}}".
@@ -48,6 +50,15 @@ class Car extends \yii\db\ActiveRecord
     {
         return [
             TimestampBehavior::class,
+            [
+                'class' => AttributeBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['user_id'],
+                ],
+                'value' => function() {
+                    return (int)Yii::$app->user->id;
+                },
+            ]
         ];
     }
 
@@ -82,4 +93,7 @@ class Car extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+
+
 }
