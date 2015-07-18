@@ -9,10 +9,7 @@
 namespace app\modules\api\controllers;
 
 
-use app\modules\api\components\HttpBearerAuth;
 use app\modules\common\models\CarModel;
-use app\modules\common\models\User;
-use yii\filters\AccessControl;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 
@@ -27,11 +24,5 @@ class ModelController extends ActiveController
         ];
         return $behaviors;
     }
-
-
-//    public function checkAccess($action, $model = null, $params = [])
-//    {
-//        return true;
-//    }
 
 }
