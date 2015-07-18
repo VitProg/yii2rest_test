@@ -10,7 +10,9 @@ namespace app\modules\api\controllers;
 
 
 use app\modules\common\models\CarModel;
+use app\modules\common\models\User;
 use yii\filters\AccessControl;
+use yii\filters\auth\HttpBasicAuth;
 use yii\rest\ActiveController;
 
 class ModelController extends ActiveController
@@ -19,6 +21,15 @@ class ModelController extends ActiveController
 
     public function behaviors() {
         return [
+            'authenticator' => [
+                'class' => HttpBasicAuth::className(),
+                'auth'=> function ($username, $password) {
+                    return User::findOne([
+                        'username' => $username,
+                        'password_hash' => $password,
+                    ]);
+                },
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -27,9 +38,6 @@ class ModelController extends ActiveController
                         'roles' => ['@'],
                     ],
                 ],
-                'denyCallback' => function ($rule, $action) {
-                    throw new \yii\web\ForbiddenHttpException('You are not allowed to access this page');
-                }
             ],
         ];
     }

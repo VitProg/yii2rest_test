@@ -26,7 +26,7 @@ $config = [
             'identityClass' => 'app\modules\common\models\User',
             'enableAutoLogin' => false,
             'loginUrl' => null,
-//            'enableSession' => false,
+            'enableSession' => false,
         ],
         'urlManager' => [
             'class' => 'yii\\web\\UrlManager',
