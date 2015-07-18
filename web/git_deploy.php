@@ -16,7 +16,7 @@
 //    die();
 //}
 
-exec('git pull');
+echo exec('./git_deploy.sh');
 
 
 
