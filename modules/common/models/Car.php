@@ -37,7 +37,7 @@ class Car extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'/*, 'model_id'*/, 'name', /*'created_at', 'updated_at'*/], 'required'],
+            [['name', 'model_id'], 'required'],
             [['user_id', 'model_id', 'year', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 32]
         ];
