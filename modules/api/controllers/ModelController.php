@@ -37,22 +37,22 @@ class ModelController extends ActiveController
 //                    ]);
 //                },
             ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
+//            'access' => [
+//                'class' => AccessControl::className(),
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['@'],
+//                    ],
+//                ],
+//            ],
         ];
     }
 
 
-    public function checkAccess($action, $model = null, $params = [])
-    {
-        return true;
-    }
+//    public function checkAccess($action, $model = null, $params = [])
+//    {
+//        return true;
+//    }
 
 }
