@@ -7,6 +7,7 @@
   */
 
 namespace app\modules\common\components;
+//          app\modules\common\components\ApiErrorHandler
 
 use Yii;
 use yii\web\ErrorHandler;
