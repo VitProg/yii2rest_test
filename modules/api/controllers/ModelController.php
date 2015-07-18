@@ -10,11 +10,26 @@ namespace app\modules\api\controllers;
 
 
 use app\modules\common\models\CarModel;
+use yii\filters\AccessControl;
 use yii\rest\ActiveController;
 
 class ModelController extends ActiveController
 {
     public $modelClass = CarModel::class;
+
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
 
 
 }

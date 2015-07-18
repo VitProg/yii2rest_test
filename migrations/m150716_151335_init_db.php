@@ -20,6 +20,7 @@ class m150716_151335_init_db extends Migration
             'auth_key' => Schema::TYPE_STRING . '(32) NOT NULL',
             'password_hash' => Schema::TYPE_STRING . ' NOT NULL',
             'password_reset_token' => Schema::TYPE_STRING,
+            'access_token' => Schema::TYPE_STRING . '(64) NOT NULL',
             'email' => Schema::TYPE_STRING . ' NOT NULL',
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
             'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
