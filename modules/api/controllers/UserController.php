@@ -22,7 +22,9 @@ class UserController extends Controller
     public function actionLogin()
     {
         $model = new LoginForm();
-        if ($model->load(\Yii::$app->getRequest()->getBodyParams(), '') && $model->login()) {
+        $post = \Yii::$app->getRequest()->getBodyParams();
+        var_dump($post);die();
+        if ($model->load($post, '') && $model->login()) {
             return \Yii::$app->user->identity->getAuthKey();
         } else {
             return $model;
